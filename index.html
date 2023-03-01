@@ -342,7 +342,7 @@
 <hr>
 <h2 id="文档如何形成"><a href="#文档如何形成" class="headerlink" title="文档如何形成"></a>文档如何形成</h2><p>API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：</p>
 <ol>
-<li><p>Txt，Markdown , Word<br>原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者.<br>文档没有集中管理方式</p>
+<li><p>Txt，Markdown , Word<br>原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者. 		<br>文档没有集中管理方式</p>
 </li>
 <li><p>文档平台（公司内部文档平台）<br>文档集中管理，手动录入，同步不够简化，文档结构有同意约束</p>
 </li>
@@ -429,13 +429,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>webpack 增加 <code>svg-inline-loader</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i svg-inline-loader --save-dev</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">test: /\.svg$/,</span><br><span class="line">loader: &apos;svg-inline-loader&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JSX使用 svg</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const newad = require(&apos;../../public/newad.svg&apos;)</span><br><span class="line">&lt;svg style=&#123;&#123;fill: &quot;#fff&quot;&#125;&#125; dangerouslySetInnerHTML=&#123;&#123;__html: newad &#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>webpack 增加 <code>svg-inline-loader</code></li>
 </ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i svg-inline-loader --save-dev</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">test: /\.svg$/,</span><br><span class="line">loader: &#x27;svg-inline-loader&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>JSX使用 svg</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const newad = require(&#x27;../../public/newad.svg&#x27;)</span><br><span class="line">&lt;svg style=&#123;&#123;fill: &quot;#fff&quot;&#125;&#125; dangerouslySetInnerHTML=&#123;&#123;__html: newad &#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -513,15 +514,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="查询机器版本，位数"><a href="#查询机器版本，位数" class="headerlink" title="查询机器版本，位数"></a>查询机器版本，位数</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a                      **查询所有信息</span><br><span class="line">cat /etc/redhat-releae      **查询版本</span><br></pre></td></tr></table></figure>
+
 <h2 id="更新kernel"><a href="#更新kernel" class="headerlink" title="更新kernel"></a>更新kernel</h2><ol>
-<li><p>安装 ELRepo到centos系统中</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查询列出目前的内核版本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo="*" --enablerepo="elrepo-kernel" list available</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内核版本更新</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --enablerepo=elrepo-kernel install kernel-ml</span><br></pre></td></tr></table></figure>
+<li>安装 ELRepo到centos系统中</li>
+</ol>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查询列出目前的内核版本</li>
+</ol>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=&quot;*&quot; --enablerepo=&quot;elrepo-kernel&quot; list available</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>内核版本更新</li>
+</ol>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum --enablerepo=elrepo-kernel install kernel-ml</span><br><span class="line"></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/10/21/Cenos%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more">more >></a>
         
@@ -628,6 +635,8 @@
 <li><p>一旦描述文档生成mock，前端mock是必须要要与平台关联起来。因为mock平台不支持外网访问，如果想在家去做开发将会比较困难。</p>
 </li>
 <li><p>假设现在文档已经形成，但是后端在开发的时候发现某些<code>API</code>设计有些许问题，然后直接在代码修改了，但是忘记更新文档，那么这个时候我的测试环境等 <code>CI</code>就无法完成，并且又可能前端为了找出这个差异需要花一定的时间去<code>DEBUG</code>。这里咱们就要说说后端开发人员的文档形成模式了，咱们暂且说<code>Swagger</code>。它提供了两种文档编辑模式：</p>
+</li>
+</ol>
 <ul>
 <li><p>侵入式</p>
 <ul>
@@ -642,8 +651,6 @@
 </ul>
 </li>
 </ul>
-</li>
-</ol>
 <blockquote>
 <p>思考的解决方案</p>
 </blockquote>
@@ -718,7 +725,8 @@
 <p>什么是自执行（Immediately-Invoked Function Expression）？</p>
 </blockquote>
 <p>在JavaScript里，任何function在执行的时候都会创建一个执行上下文，因为为function声明的变量和function有可能只在该function内部，这个上下文，在调用function的时候，提供了一种简单的方式来创建自由变量或私有子function。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 由于该function里返回了另外一个function，其中这个function可以访问自由变量i</span><br><span class="line">// 所有说，这个内部的function实际上是有权限可以调用内部的对象。</span><br><span class="line"></span><br><span class="line">function makeCounter() &#123;</span><br><span class="line">    // 只能在makeCounter内部访问i</span><br><span class="line">    var i = 0;</span><br><span class="line"></span><br><span class="line">    return function () &#123;</span><br><span class="line">        console.log(++i);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 注意，counter和counter2是不同的实例，分别有自己范围内的i。</span><br><span class="line"></span><br><span class="line">var counter = makeCounter();</span><br><span class="line">counter(); // logs: 1</span><br><span class="line">counter(); // logs: 2</span><br><span class="line"></span><br><span class="line">var counter2 = makeCounter();</span><br><span class="line">counter2(); // logs: 1</span><br><span class="line">counter2(); // logs: 2</span><br><span class="line"></span><br><span class="line">alert(i); // 引用错误：i没有defind（因为i是存在于makeCounter内部）。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 由于该function里返回了另外一个function，其中这个function可以访问自由变量i</span><br><span class="line">// 所有说，这个内部的function实际上是有权限可以调用内部的对象。</span><br><span class="line"></span><br><span class="line">function makeCounter() &#123;</span><br><span class="line">    // 只能在makeCounter内部访问i</span><br><span class="line">    var i = 0;</span><br><span class="line"></span><br><span class="line">    return function () &#123;</span><br><span class="line">        console.log(++i);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 注意，counter和counter2是不同的实例，分别有自己范围内的i。</span><br><span class="line"></span><br><span class="line">var counter = makeCounter();</span><br><span class="line">counter(); // logs: 1</span><br><span class="line">counter(); // logs: 2</span><br><span class="line"></span><br><span class="line">var counter2 = makeCounter();</span><br><span class="line">counter2(); // logs: 1</span><br><span class="line">counter2(); // logs: 2</span><br><span class="line"></span><br><span class="line">alert(i); // 引用错误：i没有defind（因为i是存在于makeCounter内部）。</span><br></pre></td></tr></table></figure>
+
 <p>很多情况下，我们不需要makeCounter多个实例，甚至某些case下，我们也不需要显示的返回值，OK，往下看。</p>
         
           <a class="article-more-a" href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/#more">more >></a>
@@ -735,11 +743,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS高级</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS高级</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
         		</li>
       		
 		</ul>
@@ -801,7 +809,7 @@
         <h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><blockquote>
 <p>圆括号运算符( ) 用来控制表达式中的运算优先级.</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var c = 3;</span><br><span class="line"></span><br><span class="line">// default precedence</span><br><span class="line">a + b * c     // 7</span><br><span class="line">// evaluated by default like this</span><br><span class="line">a + (b * c)   // 7</span><br><span class="line"></span><br><span class="line">// now overriding precedence</span><br><span class="line">// addition before multiplication   </span><br><span class="line">(a + b) * c   // 9</span><br><span class="line"></span><br><span class="line">// which is equivalent to</span><br><span class="line">a * c + b * c // 9</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var c = 3;</span><br><span class="line"></span><br><span class="line">// default precedence</span><br><span class="line">a + b * c     // 7</span><br><span class="line">// evaluated by default like this</span><br><span class="line">a + (b * c)   // 7</span><br><span class="line"></span><br><span class="line">// now overriding precedence</span><br><span class="line">// addition before multiplication   </span><br><span class="line">(a + b) * c   // 9</span><br><span class="line"></span><br><span class="line">// which is equivalent to</span><br><span class="line">a * c + b * c // 9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/#more">more >></a>
         
@@ -817,11 +825,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
         		</li>
       		
 		</ul>
@@ -880,9 +888,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
         
           <a class="article-more-a" href="/2017/03/06/hello-world/#more">more >></a>
         
@@ -1087,6 +1096,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发框架</a>
               </li>
              
@@ -1095,7 +1112,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1103,11 +1120,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1119,11 +1132,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
+                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1132,10 +1145,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">切图仔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
             
             <div class="clearfix"></div>

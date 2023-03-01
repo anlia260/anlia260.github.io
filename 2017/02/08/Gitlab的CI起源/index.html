@@ -185,7 +185,8 @@
 <li>人都不想出错</li>
 <li>失败又不是什么关荣的事情，有时候还会遭到周围人责备，所以谁也不回故意出错。</li>
 </ul>
-<a id="more"></a>
+<span id="more"></span>
+
 <p><strong>BUT</strong></p>
 <ul>
 <li>事实上如果一度认为【认为错误是没有办法的】，敷衍了事地对应，错误是不回减少的</li>
@@ -209,7 +210,8 @@
 </li>
 <li><p>错觉（误解，深信）</p>
 </li>
-<li>紧急时慌张，疲劳，注意力散漫（慌张更容易失误）</li>
+<li><p>紧急时慌张，疲劳，注意力散漫（慌张更容易失误）</p>
+</li>
 </ul>
 <hr>
 <h3 id="我们需要有效的方法，工具，流程来防止人为失误"><a href="#我们需要有效的方法，工具，流程来防止人为失误" class="headerlink" title="我们需要有效的方法，工具，流程来防止人为失误"></a>我们需要有效的方法，工具，流程来防止人为失误</h3><p>前端代码开发发布我们一直遵循着这个步骤：</p>
@@ -223,23 +225,21 @@
 <thead>
 <tr>
 <th>环节</th>
-<th style="text-align:left">因素</th>
-<th style="text-align:right">结果</th>
+<th align="left">因素</th>
+<th align="right">结果</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>开发阶段</td>
-<td style="text-align:left">误解需求，某些需求忘记了</td>
-<td style="text-align:right">测试或者上线时才发现少了功能，或者功能不对</td>
+<td align="left">误解需求，某些需求忘记了</td>
+<td align="right">测试或者上线时才发现少了功能，或者功能不对</td>
 </tr>
 <tr>
 <td>发布阶段</td>
-<td style="text-align:left">人为发错版本号</td>
-<td style="text-align:right">线上功能受到影响</td>
+<td align="left">人为发错版本号</td>
+<td align="right">线上功能受到影响</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>开发阶段，某些需求没有具体原型，或者口头叙述没有相关文档，并且开发者未记录，那么很容易产生测试或者上线的出现，</p>
 <h1 id="Oh-shit"><a href="#Oh-shit" class="headerlink" title="Oh , shit !"></a>Oh , shit !</h1><p>还有这么个功能，看来每次需求会议需要记录了。或者是对需求的时候仔细确认。</p>
 <p>开发的时候我们有可能处于这个流程</p>
@@ -265,32 +265,32 @@
 <p>上面的过程很容易产生人为失误。</p>
 <p><strong>我们需要解决的事情</strong></p>
 <ul>
-<li><p>基于git分支的commit的发布    <a href="http://blog.jobbole.com/76867/" target="_blank" rel="noopener">Git工作流</a><br><img src="http://legendtkl.com/img/uploads/2016/git-model.png" alt></p>
+<li><p>基于git分支的commit的发布    <a target="_blank" rel="noopener" href="http://blog.jobbole.com/76867/">Git工作流</a><br>  <img src="http://legendtkl.com/img/uploads/2016/git-model.png"></p>
 </li>
 <li><p>自动构建部署</p>
 </li>
 </ul>
 <p><img src="https://www.fudoor.net/img/a3.png" alt="Alt text"></p>
 <hr>
-<h3 id="持续集成过程过程（Gitlab-Ci）"><a href="#持续集成过程过程（Gitlab-Ci）" class="headerlink" title="持续集成过程过程（Gitlab-Ci）"></a>持续集成过程过程（Gitlab-Ci）</h3><p><img src="http://upload-images.jianshu.io/upload_images/525728-4339103186d2b1c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="持续集成过程过程（Gitlab-Ci）"><a href="#持续集成过程过程（Gitlab-Ci）" class="headerlink" title="持续集成过程过程（Gitlab-Ci）"></a>持续集成过程过程（Gitlab-Ci）</h3><p><img src="http://upload-images.jianshu.io/upload_images/525728-4339103186d2b1c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <ul>
 <li>配置gitlab-runner</li>
 </ul>
 <blockquote>
-<p>Gitlab 8.0 给我们提供了ci的工具，使用简单的yaml配置就可以执行我们的构建命令，并且保存每次的构建结果。那么runner就是给我们跑命令的机器环境（可以是虚拟机，docker容器…..）<br> <a href="http://www.jianshu.com/p/2b43151fb92e" target="_blank" rel="noopener">GitLab-CI与GitLab-Runner</a></p>
+<p>Gitlab 8.0 给我们提供了ci的工具，使用简单的yaml配置就可以执行我们的构建命令，并且保存每次的构建结果。那么runner就是给我们跑命令的机器环境（可以是虚拟机，docker容器…..）<br> <a target="_blank" rel="noopener" href="http://www.jianshu.com/p/2b43151fb92e">GitLab-CI与GitLab-Runner</a></p>
 </blockquote>
 <ul>
 <li>项目生产环境依赖锁定</li>
 </ul>
 <blockquote>
-<p>为什么要锁定当前目录生产依赖(node_modules),因为我要确定runner的环境要与开发一致，这样构建的结果才能与开发一致。这是我需要解决的事情，但是还有一个原因希望我的项目环境依赖是固定的，方便迁移开发，不受外部原因的影响。<br>  <a href="https://segmentfault.com/a/1190000004700432" target="_blank" rel="noopener">从 left-pad 事件我们可以学到什么?</a></p>
+<p>为什么要锁定当前目录生产依赖(node_modules),因为我要确定runner的环境要与开发一致，这样构建的结果才能与开发一致。这是我需要解决的事情，但是还有一个原因希望我的项目环境依赖是固定的，方便迁移开发，不受外部原因的影响。<br>  <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004700432">从 left-pad 事件我们可以学到什么?</a></p>
 </blockquote>
-<p><strong><em>配置gitlab-runner</em></strong></p>
+<p><em><strong>配置gitlab-runner</strong></em></p>
 <p>runner 一般需要运维去配置，如果懂一些简单的linux系统的话。自己也是可以配置一个项目的runner。<br>讲一下配置的项目runner中遇到的一些事情：</p>
 <ul>
 <li><p>先要在Specific Runner(<code>CentOs.6.8</code>)机器上安装gitlab-ci-multi-runner</p>
 <blockquote>
-<p>curl -L <a href="https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh" target="_blank" rel="noopener">https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh</a> | sudo bash<br>yum install gitlab-ci-multi-runner</p>
+<p>curl -L <a target="_blank" rel="noopener" href="https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh">https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh</a> | sudo bash<br>yum install gitlab-ci-multi-runner</p>
 </blockquote>
 </li>
 <li><p>在Gitlab上注册你的runner机器</p>
@@ -299,17 +299,17 @@
 </blockquote>
 </li>
 </ul>
-<p><strong><em>锁定项目依赖资源表</em></strong></p>
+<p><em><strong>锁定项目依赖资源表</strong></em></p>
 <blockquote>
 <p>现有的前端大而全，都会依赖一些构建工具。前端研发部采用的是fis流程，整套流程实验证明是很有价值的。<br>但是会有一部分瑕疵：无人维护、插件质量，Bug数总量，等等。但我们现有的fis流程跑的很溜的时候，</p>
 </blockquote>
-<p><strong><em>迁移到其他开发环境是否同样顺呢？</em></strong></p>
+<p><em><strong>迁移到其他开发环境是否同样顺呢？</strong></em></p>
 <blockquote>
 <p>不会的 ，不同的环境受到网络，<code>node</code>，<code>npm</code>版本影响，都会出现各种问题，最大的问题是可能出现，<code>npm</code>中的软件包会经常改变依赖版本，这样的话就需要我们锁定当前健康的构建依赖。</p>
 </blockquote>
 <blockquote>
 <p>解决方案：<br><code>npm shrinkwrap</code>锁定当前的依赖关系<br><code>npm shrinkpack</code>下载当前依赖的<code>node_module/*.tar</code>包<br><code>npm-shrinkwrap.json</code>&amp;<code>npm_shrinkwrap/</code>提交至gitlab<br><code>git co  &amp; npm i</code>这个时候你会发现下载数据非常快，因为直接从tar包中安装解压依赖。</p>
-<p>  <a href="https://segmentfault.com/a/1190000004700432" target="_blank" rel="noopener">从 left-pad 事件我们可以学到什么?</a></p>
+<p>  <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004700432">从 left-pad 事件我们可以学到什么?</a></p>
 </blockquote>
 <hr>
 <h1 id="文档历史"><a href="#文档历史" class="headerlink" title="文档历史"></a>文档历史</h1><blockquote>
@@ -544,6 +544,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发框架</a>
               </li>
              
@@ -552,7 +560,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +568,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,11 +580,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
+                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,10 +593,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">切图仔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
             
             <div class="clearfix"></div>

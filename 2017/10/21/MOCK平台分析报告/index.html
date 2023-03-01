@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>MOCK平台分析报告 | 一个追求Geek的小前端</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景前后端分离的工作模式下面，API交互文档亦然成为前后端沟通最佳介质。依赖文档，简化沟通，提高写作效率。  文档如何形成API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：  Txt，Markdown , Word原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者.文档没有集中管理方式  文档平台（公司">
+  <meta name="description" content="背景前后端分离的工作模式下面，API交互文档亦然成为前后端沟通最佳介质。依赖文档，简化沟通，提高写作效率。  文档如何形成API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：  Txt，Markdown , Word原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者. 		文档没有集中管理方式  文档平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MOCK平台分析报告">
 <meta property="og:url" content="http://example.com/2017/10/21/MOCK%E5%B9%B3%E5%8F%B0%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/index.html">
 <meta property="og:site_name" content="一个追求Geek的小前端">
-<meta property="og:description" content="背景前后端分离的工作模式下面，API交互文档亦然成为前后端沟通最佳介质。依赖文档，简化沟通，提高写作效率。  文档如何形成API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：  Txt，Markdown , Word原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者.文档没有集中管理方式  文档平台（公司">
+<meta property="og:description" content="背景前后端分离的工作模式下面，API交互文档亦然成为前后端沟通最佳介质。依赖文档，简化沟通，提高写作效率。  文档如何形成API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：  Txt，Markdown , Word原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者. 		文档没有集中管理方式  文档平台">
 <meta property="og:locale">
 <meta property="article:published_time" content="2017-10-21T13:38:53.000Z">
 <meta property="article:modified_time" content="2017-10-21T13:44:04.000Z">
@@ -172,7 +172,7 @@
 <hr>
 <h2 id="文档如何形成"><a href="#文档如何形成" class="headerlink" title="文档如何形成"></a>文档如何形成</h2><p>API文档应有前后端共同约定，商议。实际开发中API文档由后端同学维护，因为前端是API的消费者。提供文档的方式有很多种：</p>
 <ol>
-<li><p>Txt，Markdown , Word<br>原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者.<br>文档没有集中管理方式</p>
+<li><p>Txt，Markdown , Word<br>原始，文档作者手动录入，接口变动需要以来文档作者实时更新，易读性取决于作者. 		<br>文档没有集中管理方式</p>
 </li>
 <li><p>文档平台（公司内部文档平台）<br>文档集中管理，手动录入，同步不够简化，文档结构有同意约束</p>
 </li>
@@ -180,7 +180,8 @@
 </li>
 </ol>
 <hr>
-  <a id="more"></a>
+  <span id="more"></span>
+
 <h2 id="前端如何消费API文档"><a href="#前端如何消费API文档" class="headerlink" title="前端如何消费API文档"></a>前端如何消费API文档</h2><p>API文档规定了<code>API URL</code>，<code>API RESPONSE</code>，<code>API RESQUEST</code>，前端同学按照文档格式编写交互代码，有几种方式</p>
 <ol>
 <li>手写模拟JSON ，直接请求</li>
@@ -195,7 +196,7 @@
 <li>本地转发   &amp;&amp;   统一平台管理</li>
 </ul>
 <hr>
-<h2 id="AMP"><a href="#AMP" class="headerlink" title="AMP"></a><a href="http://10.0.4.20:9090/" target="_blank" rel="noopener">AMP</a></h2><p>Api Manage Platform 是<code>2016-10-10</code>部署在公司内网的一个简易MOCK SERVER 服务。提供的功能有：</p>
+<h2 id="AMP"><a href="#AMP" class="headerlink" title="AMP"></a><a target="_blank" rel="noopener" href="http://10.0.4.20:9090/">AMP</a></h2><p>Api Manage Platform 是<code>2016-10-10</code>部署在公司内网的一个简易MOCK SERVER 服务。提供的功能有：</p>
 <ol>
 <li>注册，登陆，项目权限控制</li>
 <li>手动录入API，生成MOCK地址</li>
@@ -203,7 +204,7 @@
 <li>简单的接口检测工具</li>
 </ol>
 <hr>
-<h2 id="Easy-Mock"><a href="#Easy-Mock" class="headerlink" title="Easy-Mock"></a><a href="http://10.0.4.20:7300/" target="_blank" rel="noopener">Easy-Mock</a></h2><p>Easy mock  是<code>2017-09-10</code>部署在公司内网的一个简易MOCK SERVER 服务。提供的功能有：</p>
+<h2 id="Easy-Mock"><a href="#Easy-Mock" class="headerlink" title="Easy-Mock"></a><a target="_blank" rel="noopener" href="http://10.0.4.20:7300/">Easy-Mock</a></h2><p>Easy mock  是<code>2017-09-10</code>部署在公司内网的一个简易MOCK SERVER 服务。提供的功能有：</p>
 <ol>
 <li>注册，登陆，项目权限控制</li>
 <li>手动录入API，生成MOCK地址</li>
@@ -223,45 +224,44 @@
 <thead>
 <tr>
 <th>EASY-MOCK</th>
-<th style="text-align:left">亮点</th>
-<th style="text-align:left">需要优化与BUG</th>
+<th align="left">亮点</th>
+<th align="left">需要优化与BUG</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td></td>
-<td style="text-align:left">支持Swagger，自动与手动编辑接口</td>
-<td style="text-align:left">swagger仅支持标准openapi范式，公司内部swagger多数有自定义格式，swagger支持不是很好</td>
+<td align="left">支持Swagger，自动与手动编辑接口</td>
+<td align="left">swagger仅支持标准openapi范式，公司内部swagger多数有自定义格式，swagger支持不是很好</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align:left">支持Mockjs与响应式数据</td>
-<td style="text-align:left">接口代理功能属于鸡肋</td>
+<td align="left">支持Mockjs与响应式数据</td>
+<td align="left">接口代理功能属于鸡肋</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align:left">可视化数据编辑</td>
-<td style="text-align:left">快捷键容易造成误操作（已经提issues）</td>
+<td align="left">可视化数据编辑</td>
+<td align="left">快捷键容易造成误操作（已经提issues）</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align:left">接口复制，项目克隆</td>
-<td style="text-align:left">官方维护貌似挺慢的</td>
+<td align="left">接口复制，项目克隆</td>
+<td align="left">官方维护貌似挺慢的</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align:left">项目接口打包下载</td>
-<td style="text-align:left">暂未支持版本管理与DIFF</td>
+<td align="left">项目接口打包下载</td>
+<td align="left">暂未支持版本管理与DIFF</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <hr>
 <h2 id="Easy-mock-解决了什么"><a href="#Easy-mock-解决了什么" class="headerlink" title="Easy-mock 解决了什么"></a>Easy-mock 解决了什么</h2><ol>
 <li><p>项目统一的文档管理与接口服务</p>
 </li>
 <li><p>前端MOCK服务，后端录入文档，前端可以直接使用，不用本地增加任何开发设施（转发服务，本地JSON生成）</p>
 <pre><code>原有流程：API文档（找个位置放着） =&gt; 前端手动翻译成MOCK JSON =&gt; 设置本地代理或者转发  =&gt; 交互开发
-</code></pre><p> 改后流程：EASY MOCK API文档  =&gt; 交互开发</p>
+</code></pre>
+<p> 改后流程：EASY MOCK API文档  &#x3D;&gt; 交互开发</p>
 </li>
 <li><p>丰富了前端MOCK方式与更多功能性</p>
 </li>
@@ -279,7 +279,7 @@
 <p>​</p>
 </li>
 </ol>
-<h2 id="其他-开源mock平台"><a href="#其他-开源mock平台" class="headerlink" title="其他(开源mock平台)"></a>其他(开源mock平台)</h2><p><a href="http://amp.fudoor.net/" target="_blank" rel="noopener">AMP</a>@小爝团队开源产品与<a href="http://easy-mock.fudoor.net/" target="_blank" rel="noopener">Easy-Mock</a>By芋头团队开源产品</p>
+<h2 id="其他-开源mock平台"><a href="#其他-开源mock平台" class="headerlink" title="其他(开源mock平台)"></a>其他(开源mock平台)</h2><p><a target="_blank" rel="noopener" href="http://amp.fudoor.net/">AMP</a>@小爝团队开源产品与<a target="_blank" rel="noopener" href="http://easy-mock.fudoor.net/">Easy-Mock</a>By芋头团队开源产品</p>
 <p>   ​</p>
 
       
@@ -515,6 +515,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发框架</a>
               </li>
              
@@ -523,7 +531,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,11 +539,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发流程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">持续部署</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +551,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Ngixn</a>
+                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,10 +564,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">切图仔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mock</a>
               </li>
             
             <div class="clearfix"></div>
