@@ -153,12 +153,90 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">如何解决nodejs运行时使用全局依赖包？</a>
+      <a class="article-title" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">Callback =&gt; Promise</a>
     </h1>
   
 
         
         <a href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-04-01T05:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在小程序中，微信小程序的语法亦然采用的callback方式。<br>为了使用顺手，我希望</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cumbersome 😭</span></span><br><span class="line"><span class="title class_">Taro</span>.<span class="title function_">login</span>(&#123;</span><br><span class="line">  <span class="attr">success</span>: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">fail</span>: <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// concise 😊</span></span><br><span class="line"><span class="keyword">import</span> &#123; promisify, asynclogin &#125; <span class="keyword">from</span> <span class="string">&quot;promisify.ts&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span> <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; code &#125; = <span class="keyword">await</span> <span class="title function_">promisify</span>(<span class="title class_">Taro</span>.<span class="property">login</span>)();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">  </span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为了达到这个目的需要一个包装器-promisify-ts"><a href="#为了达到这个目的需要一个包装器-promisify-ts" class="headerlink" title="为了达到这个目的需要一个包装器(promisify.ts)"></a>为了达到这个目的需要一个包装器(promisify.ts)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span> <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将方法promise化</span></span><br><span class="line"><span class="comment"> * 替换[&#x27;fail&#x27;, &#x27;success&#x27;, &#x27;complete&#x27;]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">method</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">IMethodType</span> = <span class="function">(<span class="params">options: <span class="built_in">any</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">promisify</span> = (<span class="params">method: IMethodType</span>) =&gt; &#123;</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">typeof</span> method !== <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`method is not a function.`</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> (<span class="attr">options</span>: <span class="built_in">object</span> = &#123;&#125;): <span class="title class_">Promise</span>&lt;<span class="built_in">any</span>&gt; =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">method</span>(</span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, options, &#123;</span><br><span class="line">          <span class="attr">success</span>: resolve,</span><br><span class="line">          <span class="attr">fail</span>: reject</span><br><span class="line">        &#125;)</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> asynclogin = <span class="title function_">promisify</span>(<span class="title class_">Taro</span>.<span class="property">login</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> promisify;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="🔥🔥🔥-Just-have-a-small-fun"><a href="#🔥🔥🔥-Just-have-a-small-fun" class="headerlink" title="🔥🔥🔥 Just have a small fun  !"></a>🔥🔥🔥 Just have a small fun  !</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">实践</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/实践/" class="article-tag-list-link color3">实践</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Callback =&gt; Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/01/Callback%20=%3E%20Promise/">如何解决nodejs运行时使用全局依赖包？</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/01/Callback%20=%3E%20Promise/" class="archive-article-date">
   	<time datetime="2021-04-01T05:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
 </a>
         
@@ -209,7 +287,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/04/01/Callback%20=%3E%20Promise/">展开全文 >></a>
         </p>
       
 
@@ -968,88 +1046,6 @@
 
 
   
-    <article id="post-JS基础之圆括号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/">JS基础之圆括号</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2017-03-09T15:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><blockquote>
-<p>圆括号运算符( ) 用来控制表达式中的运算优先级.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var c = 3;</span><br><span class="line"></span><br><span class="line">// default precedence</span><br><span class="line">a + b * c     // 7</span><br><span class="line">// evaluated by default like this</span><br><span class="line">a + (b * c)   // 7</span><br><span class="line"></span><br><span class="line">// now overriding precedence</span><br><span class="line">// addition before multiplication   </span><br><span class="line">(a + b) * c   // 9</span><br><span class="line"></span><br><span class="line">// which is equivalent to</span><br><span class="line">a * c + b * c // 9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JS/" class="article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1204,6 +1200,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实践</a>
               </li>
             
             <div class="clearfix"></div>
