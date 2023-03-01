@@ -189,28 +189,9 @@
 <p>git push -set-upstream …</p>
 </blockquote>
 <p>以上为伪代码，表示一个基于已有的旧项目，提交一个新项目</p>
-<h3 id="（第二种做法）fork"><a href="#（第二种做法）fork" class="headerlink" title="（第二种做法）fork"></a>（第二种做法）fork</h3><blockquote>
-<p>gitlab fork 已有的项目 frontend&#x2F;fc&#x2F;old-mp -&gt; frontend&#x2F;old-mp</p>
-</blockquote>
-<blockquote>
-<p>frontend&#x2F;old-mp 修改项目设置，修改成新的名字 frontend&#x2F;new-mp</p>
-</blockquote>
-<blockquote>
-<p>使用 Transfer 功能，进行项目迁移(frontend&#x2F;new-mp -&gt; frontend&#x2F;jv&#x2F;new-mp) 项目设置 Advanced&#x2F;Transfer project </p>
-</blockquote>
-<p>其实到这里已经完毕了，新项目仓库已经用用整改项目结构了。</p>
-<p>但是由于fork的原因，其commit，branch，tag等都在。因为是新仓库，期望这些都是init的，所以我们需要把这些都清理掉。</p>
-<h3 id="git-checkout-–orphan-lastest-branch"><a href="#git-checkout-–orphan-lastest-branch" class="headerlink" title="git checkout –orphan lastest_branch"></a>git checkout –orphan lastest_branch</h3><p>创建孤立分支。</p>
-<p>我们基于master创建一个孤立分支，孤立分支的意思是，这个分支所有的commit都会清空，只有最后一个<code>HEAD</code></p>
-<p>然后我们通过一些手段把这个孤立分支回溯到master即可。</p>
-<ol>
-<li>push lastest_branch</li>
-<li>remove all tags</li>
-<li>remove all branch except lastest_branch （可能需要涉及到仓库的管理权限）</li>
-<li>done</li>
-</ol>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>仅仅是一个<code>茴</code>字怎么写的过程。😄 </p>
-
+        
+          <a class="article-more-a" href="/2022/05/16/Git%E5%9F%BA%E4%BA%8E%E5%B7%B2%E6%9C%89%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA%E6%96%B0%E4%BB%93%E5%BA%93/#more">more >></a>
+        
       
 
       
