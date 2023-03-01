@@ -146,19 +146,100 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-nodejs中reuqire全局模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-巧用yarn-link" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">Callback =&gt; Promise</a>
+      <a class="article-title" href="/2021/04/16/%E5%B7%A7%E7%94%A8yarn-link/">巧用yarn link</a>
     </h1>
   
 
         
-        <a href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+        <a href="/2021/04/16/%E5%B7%A7%E7%94%A8yarn-link/" class="archive-article-date">
+  	<time datetime="2021-04-16T03:12:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一般用来调试npm-package"><a href="#一般用来调试npm-package" class="headerlink" title="一般用来调试npm package"></a>一般用来调试npm package</h2><ol>
+<li><code>yarn config dir</code> 获取全局以来安装位置 <code>$yarn_global_patch</code></li>
+<li><code>cd $yarn_global_patch/node_modules/modulex</code> 进入<code>modulex</code>内</li>
+<li>执行 <code>yarn link</code></li>
+<li>执行成功了将会显示 <code>success Registered &quot;modulex&quot;.</code></li>
+<li><code>cd $project_path</code> 进入项目根目录</li>
+<li><code>yarn link modulex</code> 此时，项目下<code>node_modules</code> 将会生成存在 <code>modulex</code></li>
+<li>此时 <code>yarn release</code> 可以正常运行</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/16/%E5%B7%A7%E7%94%A8yarn-link/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Callback =&gt; Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/01/Callback%20=%3E%20Promise/">Callback =&gt; Promise</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/01/Callback%20=%3E%20Promise/" class="archive-article-date">
   	<time datetime="2021-04-01T05:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
 </a>
         
@@ -198,87 +279,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/实践/" class="article-tag-list-link color3">实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Callback =&gt; Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/01/Callback%20=%3E%20Promise/">如何解决nodejs运行时使用全局依赖包？</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/01/Callback%20=%3E%20Promise/" class="archive-article-date">
-  	<time datetime="2021-04-01T05:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="yarn-link"><a href="#yarn-link" class="headerlink" title="yarn link"></a>yarn link</h2><ol>
-<li><code>yarn config dir</code> 获取全局以来安装位置 <code>$yarn_global_patch</code></li>
-<li><code>cd $yarn_global_patch/node_modules/miniprogram-ci</code> 进入<code>miniprogram-ci</code>内</li>
-<li>执行 <code>yarn link</code></li>
-<li>执行成功了将会显示 <code>success Registered &quot;miniprogram-ci&quot;.</code></li>
-<li><code>cd $project_path</code> 进入项目根目录</li>
-<li><code>yarn link miniprogram-ci</code> 此时，项目下<code>node_modules</code> 将会生成存在 <code>miniprogram-ci</code></li>
-<li>此时 <code>yarn release</code> 可以正常运行</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
         		</li>
       		
 		</ul>
