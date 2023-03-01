@@ -146,6 +146,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-组件的思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/">组件拆分的思考</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/" class="archive-article-date">
+  	<time datetime="2022-03-16T03:12:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>With great power comes great responsibility</p>
+<p>对于组件拆分的思考</p>
+<p>我们转移给使用者多少控制权，就丧失了多少即插即用的组件复用点。</p>
+<p>灵活度和复杂度之间的控制是一场永恒的博弈，结局终归会是面向场景的 trade-off，不同的场景控制着不同的组件设计思路。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/531555960/answer/2552310734">https://www.zhihu.com/question/531555960/answer/2552310734</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/思考/" class="article-tag-list-link color3">思考</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-巧用yarn-link" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -961,91 +1038,6 @@
 
 
   
-    <article id="post-JS高级之IIFE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/">JS基础之IIFE</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/" class="archive-article-date">
-  	<time datetime="2017-03-09T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>什么是自执行（Immediately-Invoked Function Expression）？</p>
-</blockquote>
-<p>在JavaScript里，任何function在执行的时候都会创建一个执行上下文，因为为function声明的变量和function有可能只在该function内部，这个上下文，在调用function的时候，提供了一种简单的方式来创建自由变量或私有子function。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 由于该function里返回了另外一个function，其中这个function可以访问自由变量i</span><br><span class="line">// 所有说，这个内部的function实际上是有权限可以调用内部的对象。</span><br><span class="line"></span><br><span class="line">function makeCounter() &#123;</span><br><span class="line">    // 只能在makeCounter内部访问i</span><br><span class="line">    var i = 0;</span><br><span class="line"></span><br><span class="line">    return function () &#123;</span><br><span class="line">        console.log(++i);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 注意，counter和counter2是不同的实例，分别有自己范围内的i。</span><br><span class="line"></span><br><span class="line">var counter = makeCounter();</span><br><span class="line">counter(); // logs: 1</span><br><span class="line">counter(); // logs: 2</span><br><span class="line"></span><br><span class="line">var counter2 = makeCounter();</span><br><span class="line">counter2(); // logs: 1</span><br><span class="line">counter2(); // logs: 2</span><br><span class="line"></span><br><span class="line">alert(i); // 引用错误：i没有defind（因为i是存在于makeCounter内部）。</span><br></pre></td></tr></table></figure>
-
-<p>很多情况下，我们不需要makeCounter多个实例，甚至某些case下，我们也不需要显示的返回值，OK，往下看。</p>
-        
-          <a class="article-more-a" href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS高级</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JS/" class="article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1204,6 +1196,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">实践</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">思考</a>
               </li>
             
             <div class="clearfix"></div>

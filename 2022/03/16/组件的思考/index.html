@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JS基础之圆括号 | 一个追求Geek的小前端</title>
+  <title>组件拆分的思考 | 一个追求Geek的小前端</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运算符 圆括号运算符( ) 用来控制表达式中的运算优先级.  12345678910111213141516var a &#x3D; 1;var b &#x3D; 2;var c &#x3D; 3;&#x2F;&#x2F; default precedencea + b * c     &#x2F;&#x2F; 7&#x2F;&#x2F; evaluated by default like thisa + (b * c)   &#x2F;&#x2F; 7&#x2F;&#x2F; now overriding preceden">
+  <meta name="description" content="With great power comes great responsibility 对于组件拆分的思考 我们转移给使用者多少控制权，就丧失了多少即插即用的组件复用点。 灵活度和复杂度之间的控制是一场永恒的博弈，结局终归会是面向场景的 trade-off，不同的场景控制着不同的组件设计思路。 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;531555960&#x2F;answer&#x2F;2552">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS基础之圆括号">
-<meta property="og:url" content="http://example.com/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/index.html">
+<meta property="og:title" content="组件拆分的思考">
+<meta property="og:url" content="http://example.com/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/index.html">
 <meta property="og:site_name" content="一个追求Geek的小前端">
-<meta property="og:description" content="运算符 圆括号运算符( ) 用来控制表达式中的运算优先级.  12345678910111213141516var a &#x3D; 1;var b &#x3D; 2;var c &#x3D; 3;&#x2F;&#x2F; default precedencea + b * c     &#x2F;&#x2F; 7&#x2F;&#x2F; evaluated by default like thisa + (b * c)   &#x2F;&#x2F; 7&#x2F;&#x2F; now overriding preceden">
+<meta property="og:description" content="With great power comes great responsibility 对于组件拆分的思考 我们转移给使用者多少控制权，就丧失了多少即插即用的组件复用点。 灵活度和复杂度之间的控制是一场永恒的博弈，结局终归会是面向场景的 trade-off，不同的场景控制着不同的组件设计思路。 https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;531555960&#x2F;answer&#x2F;2552">
 <meta property="og:locale">
-<meta property="article:published_time" content="2017-03-09T15:14:34.000Z">
-<meta property="article:modified_time" content="2017-03-09T15:50:41.000Z">
+<meta property="article:published_time" content="2022-03-16T03:12:29.000Z">
+<meta property="article:modified_time" content="2023-03-01T16:59:55.784Z">
 <meta property="article:author" content="Fed Akex">
-<meta property="article:tag" content="前端进阶">
-<meta property="article:tag" content="JS基础">
+<meta property="article:tag" content="思考">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="一个追求Geek的小前端" type="application/atom+xml">
@@ -148,53 +147,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS基础之圆括号" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-组件的思考" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JS基础之圆括号
+      组件拆分的思考
     </h1>
   
 
         
-        <a href="/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2017-03-09T15:14:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
+        <a href="/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/" class="archive-article-date">
+  	<time datetime="2022-03-16T03:12:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><blockquote>
-<p>圆括号运算符( ) 用来控制表达式中的运算优先级.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var c = 3;</span><br><span class="line"></span><br><span class="line">// default precedence</span><br><span class="line">a + b * c     // 7</span><br><span class="line">// evaluated by default like this</span><br><span class="line">a + (b * c)   // 7</span><br><span class="line"></span><br><span class="line">// now overriding precedence</span><br><span class="line">// addition before multiplication   </span><br><span class="line">(a + b) * c   // 9</span><br><span class="line"></span><br><span class="line">// which is equivalent to</span><br><span class="line">a * c + b * c // 9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h4 id="分组运算符"><a href="#分组运算符" class="headerlink" title="分组运算符"></a>分组运算符</h4><blockquote>
-<p>Return the result of evaluating Expression. This may be of type Reference.</p>
-</blockquote>
-<blockquote>
-<p>返回评估括号中的表达式的结果。结果可能是Reference类型。</p>
-</blockquote>
-<p>抛开像Reference类型这种词汇，这里的一个关键词应当是“ 评估 ”（对evaluate的翻译一直把握不好，姑且这么叫吧），但是关于分组运算符，又有一个很重要的下文：</p>
-<blockquote>
-<p>This algorithm does not apply GetValue to the result of evaluating Expression.</p>
-</blockquote>
-<blockquote>
-<p>这个算法不会对估算的结果使用GetValue。</p>
-</blockquote>
-<p>有很多专用的名词，看起来确实复杂，简而言之，使用括号运算符本身不会让括号中的代码立即执行，只有当括号包含的这个“分组”参与其他运算时，才会执行。因此，(function(){})()这个语句，其实是首先用分组运算符评估了一个函数表达式，随后参与“函数调用”。而(function(){}())这个语句，则是用分组运算符评估了一个函数调用，随后由于语句的结束而被执行。从语句上来说有细微的差距，当然就结果而言是一样的，</p>
-<blockquote>
-<p>credit</p>
-</blockquote>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20292224">分组运算符</a></li>
-</ul>
+        <p>With great power comes great responsibility</p>
+<p>对于组件拆分的思考</p>
+<p>我们转移给使用者多少控制权，就丧失了多少即插即用的组件复用点。</p>
+<p>灵活度和复杂度之间的控制是一场永恒的博弈，结局终归会是面向场景的 trade-off，不同的场景控制着不同的组件设计思路。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/531555960/answer/2552310734">https://www.zhihu.com/question/531555960/answer/2552310734</a></p>
 
       
 
@@ -229,11 +206,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端进阶</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思考</a>
         		</li>
       		
 		</ul>
@@ -245,7 +218,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/JS/" class="article-tag-list-link color3">JS</a>
+        			<a href="/categories/思考/" class="article-tag-list-link color3">思考</a>
         		</li>
       		
 		</ul>
@@ -300,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://example.com/2017/03/09/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9C%86%E6%8B%AC%E5%8F%B7/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://example.com/2022/03/16/%E7%BB%84%E4%BB%B6%E7%9A%84%E6%80%9D%E8%80%83/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +287,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/09/JS%E9%AB%98%E7%BA%A7%E4%B9%8BIIFE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS基础之IIFE
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/06/%E5%89%8D%E7%AB%AF%E7%9A%84%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端的持续集成与部署</div>
+    <a href="/2021/04/16/%E5%B7%A7%E7%94%A8yarn-link/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">巧用yarn link</div>
       <i class="icon-circle-right"></i>
     </a>
   
