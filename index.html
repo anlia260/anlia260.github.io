@@ -146,6 +146,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-nodejs中reuqire全局模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">如何解决nodejs运行时使用全局依赖包？</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-04-01T05:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="yarn-link"><a href="#yarn-link" class="headerlink" title="yarn link"></a>yarn link</h2><ol>
+<li><code>yarn config dir</code> 获取全局以来安装位置 <code>$yarn_global_patch</code></li>
+<li><code>cd $yarn_global_patch/node_modules/miniprogram-ci</code> 进入<code>miniprogram-ci</code>内</li>
+<li>执行 <code>yarn link</code></li>
+<li>执行成功了将会显示 <code>success Registered &quot;miniprogram-ci&quot;.</code></li>
+<li><code>cd $project_path</code> 进入项目根目录</li>
+<li><code>yarn link miniprogram-ci</code> 此时，项目下<code>node_modules</code> 将会生成存在 <code>miniprogram-ci</code></li>
+<li>此时 <code>yarn release</code> 可以正常运行</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/01/nodejs%E4%B8%ADreuqire%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-CR Better" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -969,85 +1050,6 @@
 
 
   
-    <article id="post-前端的持续集成与部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/%E5%89%8D%E7%AB%AF%E7%9A%84%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2/">前端的持续集成与部署</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/06/%E5%89%8D%E7%AB%AF%E7%9A%84%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-  	<time datetime="2017-03-06T14:12:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="开发流程图"><a href="#开发流程图" class="headerlink" title="开发流程图"></a>开发流程图</h3><p><img src="https://raw.githubusercontent.com/anlia260/anlia260.github.io/master/img/3.png" alt="开发CI流程"></p>
-        
-          <a class="article-more-a" href="/2017/03/06/%E5%89%8D%E7%AB%AF%E7%9A%84%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发流程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">持续部署</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CI/" class="article-tag-list-link color3">CI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/06/%E5%89%8D%E7%AB%AF%E7%9A%84%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1198,6 +1200,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">质量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
             
             <div class="clearfix"></div>
